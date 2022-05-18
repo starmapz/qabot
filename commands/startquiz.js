@@ -22,14 +22,13 @@ module.exports = {
 	async execute(interaction) {
 		
 		if(!allowed_Channels.includes( interaction.channelId)){
-			console.log(allowed_Channels)
-			console.log(interaction.channelId)
+
 			await interaction.reply({ content: "Command now allowed in this channel. 该频道不允许使用此指令。", components: [], ephemeral: true });
 			return;
 		}
 		let selections=this.shuffleArray(question.length,totalQuestion);
 		var selectionIDString="select-0-"+selections.join('-');
-		console.log(selectionIDString)
+		// console.log(selectionIDString)
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageSelectMenu()
