@@ -37,11 +37,15 @@ client.on('interactionCreate', async interaction => {
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isSelectMenu()) return;
-
-	if (interaction.customId.split('-')[0] === 'select') {
-		const command = client.commands.get("startquiz");
-		await command.nextquestion(interaction);
-		// await interaction.update({ content: 'Something was selected!', components: [] });
+	try {
+		if (interaction.customId.split('-')[0] === 'select') {
+			const command = client.commands.get("startquiz");
+			await command.nextquestion(interaction);
+			// await interaction.update({ content: 'Something was selected!', components: [] });
+		}
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
 
