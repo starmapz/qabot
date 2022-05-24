@@ -61,7 +61,8 @@ module.exports = {
 			}
 			else{
 				if(curr==totalQuestion-1){
-					interaction.member.roles.add(assignRole);
+					var mymember=interaction.member;
+					await mymember.roles.add(assignRole);
 					await interaction.update({ content:"Congrats, you obtained a new role! 恭喜答题成功，你获得了新身份！", components: [], ephemeral: true });
 				}
 				else{
